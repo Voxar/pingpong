@@ -1,5 +1,6 @@
 .page{
   width: 404px;
+  height: 220px;
 }
 .left, .right{
   width: 200px;
@@ -72,5 +73,9 @@ div.info{
 
 .winner{
   color: red;
-  
+}
+
+#help{
+  clear:both;
+  height: 530px;
 }
