@@ -133,16 +133,6 @@ $(function() {
     return game;
   })();
   
-  // left.number.click(function() {
-  //   left.number.increment();
-  //   game.checkWin(left) || game.update_serves();
-  // })
-  // 
-  // right.number.click(function() {
-  //   right.number.increment()
-  //   game.checkWin(right) || game.update_serves()
-  // })
-  
   updateOrientation();
   game.reset();
 });
