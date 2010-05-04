@@ -67,7 +67,7 @@ $(function() {
         } else {
           current_serving = 0;
         }
-        setServe(current_serving)
+        this.setServe(current_serving)
       },
       update_serves : function() {
         if(--serves_left == 0){

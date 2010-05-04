@@ -13,7 +13,6 @@ get '/:players' do
   erb :index
 end
 
-
 get '/:player1/:player2' do
   erb :index
 end

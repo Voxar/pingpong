@@ -13,14 +13,14 @@
 <body onorientationchange="updateOrientation();">
   <div class="page">
     <div class="left">
-      <div class="name"><%= params[:player1] %></div>
+      <div class="name"><%= params[:player1].capitalize %></div>
       <div class="wrapper">
         <div class="number">0</div>
       </div>
       <div class="info">serve</div>
     </div>
     <div class="right border">
-      <div class="name"><%= params[:player2] %></div>
+      <div class="name"><%= params[:player2].capitalize %></div>
       <div class="wrapper">
         <div class="number">0</div>
       </div>
