@@ -94,6 +94,15 @@ $(function() {
           this.victoryDance(left_score > right_score ? left : right);
           return true;
         }
+      },
+      reset : function() {
+        var left_score = parseInt(left.number.html())
+        var right_score = parseInt(right.number.html())
+        var yes_please = true;
+        if((left_score == 0 && right_score == 0) || confirm("Do you want to start a new game?")){
+          left.number.set(0);
+          right.number.set(0);
+        }
       }
       
     }//end gameobject
@@ -119,9 +128,11 @@ function updateOrientation () {
   switch(window.orientation){
     case -90: //right
       game.setServe(1);
+      game.reset()
       break;
     case 90: //left
       game.setServe(0);
+      game.reset()
       break;
   }
 }
