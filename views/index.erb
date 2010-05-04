@@ -4,23 +4,23 @@
   <title>Pingpong Score</title>
   <meta content="yes" name="apple-mobile-web-app-capable" />
   <meta name="viewport" content="width=420,user-scalable=no" />
-  <link rel="stylesheet" href="style.css" type="text/css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-  <script src="script.js" type="text/javascript" charset="utf-8"></script>
+  <script src="/script.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
-<body>
+<body onorientationchange="updateOrientation();">
   <div class="page">
     <div class="left">
-      <div class="name">Player 1</div>
+      <div class="name"><%= params[:player1] %></div>
       <div class="wrapper">
         <div class="number">0</div>
       </div>
       <div class="info">serve</div>
     </div>
     <div class="right border">
-      <div class="name">Player 2</div>
+      <div class="name"><%= params[:player2] %></div>
       <div class="wrapper">
         <div class="number">0</div>
       </div>

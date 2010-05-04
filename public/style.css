@@ -69,3 +69,8 @@ div.info{
   margin-top: -5px;
   font-style: italic;
 }
+
+.winner{
+  color: red;
+  
+}
