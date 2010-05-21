@@ -141,12 +141,12 @@ div.serve{
   clear: both;  
   }
 div.serve.right {
-  margin: 0 0 0 280px;
+  margin: 0 0 0 210px;
   -webkit-transform: rotate(10deg);
   -webkit-transition: all .5s ease-in-out;
   }
 div.serve.left {
-  margin: 0 0 0 120px;
+  margin: 0 0 0 90px;
   -webkit-transform: rotate(-10deg); 
   -webkit-transition: all .5s ease-in-out;
   }
