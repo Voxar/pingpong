@@ -152,18 +152,20 @@ function updateOrientation(orientation) {
     case -90: //right
       game.setServe(1);
       game.reset()
-      $("#help").slideUp(scroll);
-      $(".page").slideDown();
+      $(".page").removeClass("hidden")
+      $("#help").addClass("hidden")
       break;
     case 90: //left
       game.setServe(0);
       game.reset();
-      $("#help").slideUp(scroll);
-      $(".page").slideDown();
+      $(".page").removeClass("hidden")
+      $("#help").addClass("hidden")
+
       break;
     case 0:
-      $("#help").slideDown(scroll);
-      $(".page").slideUp();
+      $(".page").addClass("hidden")
+      $("#help").removeClass("hidden")
+      
       break;
   }
   window.scrollTo(0, 1);

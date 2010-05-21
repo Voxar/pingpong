@@ -100,13 +100,20 @@ div.info {
   clear: both;
   margin-top: 10px;
   height: 530px;
+  overflow:hidden;
   }
 #help img {
   float: left;
   clear: left;
   margin: -30px 0 0 180px;
   }
-  
+.hidden{
+  height: 0px !important;
+ }
+#help, .page{
+  -webkit-transition: all .5s ease-in-out;
+}
+
 #instructions {
   float: left;
   width: 290px;
