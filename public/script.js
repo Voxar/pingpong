@@ -8,7 +8,7 @@ $(function() {
         var number = this;
         var new_number = number.clone();
         number.html(n).before(new_number)
-        box.box.find(".number").animate({top:-100}, 100, function() {
+        box.box.find(".number").animate({top:-0}, 0, function() {
           number.css("top", 0)
           new_number.remove();
         })
@@ -40,7 +40,7 @@ $(function() {
       dance : function() {
         var up = function() { box.info.animate({'font-size': '2em', 'top': -15}, down) }
         var down = function() { box.info.animate({'font-size': '1em', 'top': 0}, up) }
-        this.css("left", 0).addClass("winner").html("WINNER")
+        this.css("left", 0).addClass("winner").html("Winner!")
         up();
         return this;
       },
