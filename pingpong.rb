@@ -7,12 +7,12 @@ get '/' do
   erb :index
 end
 
-get '/:players' do
+get '/play/:players' do
   p1, p2 = params[:players].split(/ |%20|,/)
   params.update(:player1 => p1, :player2 => p2)
   erb :index
 end
 
-get '/:player1/:player2' do
+get '/play/:player1/:player2' do
   erb :index
 end

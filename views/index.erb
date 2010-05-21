@@ -3,7 +3,7 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
   <title>Pingpong Score</title>
   <meta content="yes" name="apple-mobile-web-app-capable" />
-  <meta name="viewport" content="width=420,user-scalable=no" />
+  <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
   <link rel="stylesheet" href="/style.css" type="text/css" media="screen" title="no title" charset="utf-8">
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
@@ -12,31 +12,41 @@
 </head>
 <body onorientationchange="updateOrientation();">
   <div class="page">
-    <div class="left">
-      <div class="name"><%= params[:player1].capitalize %></div>
-      <div class="wrapper">
-        <div class="number">0</div>
+    <div class="score-keeper">
+      <div class="left">
+        <div class="name"><%= params[:player1].capitalize %></div>
+        <div class="wrapper">
+          <div class="number">0</div>
+        </div>
+        <div class="info">serve</div>
       </div>
-      <div class="info">serve</div>
+      <div class="right border">
+        <div class="name"><%= params[:player2].capitalize %></div>
+        <div class="wrapper">
+          <div class="number">0</div>
+        </div>
+        <div class="info">&nbsp;</div>
+      </div>
     </div>
-    <div class="right border">
-      <div class="name"><%= params[:player2].capitalize %></div>
-      <div class="wrapper">
-        <div class="number">0</div>
-      </div>
-      <div class="info">serve</div>
+    <div class="serve left">
+      <img src="/images/serve.png" alt="serve" width="80" height="115" />
     </div>
   </div>
   <div id="help">
+    <!--
     <h1>PingPong!</h1>
-    <p>This is an iPhone webapp that keeps track of the score at the <a href="http://www.elabs.se/">eLabs</a> pingpong table.</p>
-    <h2>Instructions</h2>
-    <p>Lean the iPhone left or right to start. The direction you lean it determines who starts to serve.</p>
-    <p>Each player serves three times, indicated by "serve" at the bottom.</p>
-    <p>Tap a player each time that player scores to increment the score.</p>
-    <p>When a player reaches eleven and leads by two, he wins.</p>
-    <p>Hold the iPhone upright (the way you are holding it right now) and then lean it to the side again to restart the counter.</p>
-    <p>You can set the player names by visiting "/player1name/player2name" (you can also use space or comma as separators)</p>
+    <p>This is an iPhone webapp that keeps track of the score at the <a href="http://www.elabs.se/">Elabs</a> pingpong table.</p>
+    -->
+    <div id="instructions">
+      <h2>Instructions</h2>
+      <p>Lean the iPhone left or right to start. The direction you lean it determines who starts to serve.</p>
+      <p>Each player serves two times, indicated by the sign.</p>
+      <p>Tap a players score to increment it.</p>
+      <p>When a player reaches eleven and leads by two, he wins.</p>
+      <p>Hold the iPhone upright (the way you are holding it right now) and then lean it to the side again to restart the counter.</p>
+      <p>You can set the player names by visiting "/play/player1name/player2name" (you can also use space or comma as separators, but you need the play/ path intact).</p>
+    </div>
+    <img src="/images/ball.png" alt="ball2" width="101" height="112" />
   </div>
 </body>
 </html>

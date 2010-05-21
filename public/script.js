@@ -1,7 +1,7 @@
 var game = undefined;
 $(function() {
-  var boxxer = function(box) {
-    box = {box:box,name:box.find(".name"),number:box.find(".number"),info:box.find(".info")}
+  var boxxer = function(box, player) {
+    box = {box:box,name:box.find(".name"),number:box.find(".number"),info:box.find(".info"),player:player}
     
     jQuery.extend(box.number, {
       set : function(n) {
@@ -45,7 +45,7 @@ $(function() {
         return this;
       },
       reset : function() {
-        this.stop().css({'font-size': '1em', 'top': 0}).html("serve").removeClass("winner")
+        this.stop().css({'font-size': '1em', 'top': 0}).html("&nbsp;").removeClass("winner")
         return this;
       }
     });
@@ -56,22 +56,20 @@ $(function() {
   
   game = (function() {
     //Private
-
+    
     //Public
     game = {
-      serves_left: 3,
-      num_serves : 3,
+      num_serves : 2,
+      serves_left: 2,
       current_serving: 0,
-      left: boxxer($(".left")),
-      right: boxxer($(".right")),
+      left: boxxer($(".left"), 0),
+      right: boxxer($(".right"), 1),
       win : false,
       setServe : function(player) {
         if(player == 1){
-          this.left.info.slideRight();
-          this.right.info.slideIn();
+          $(".serve").removeClass("left").addClass("right")
         } else {
-          this.left.info.slideIn();
-          this.right.info.slideLeft();
+          $(".serve").removeClass("right").addClass("left")
         }
         this.current_serving = player;
       },
@@ -85,16 +83,22 @@ $(function() {
       },
       update_serves : function() {
         if(--this.serves_left == 0){
-          this.switchServe()
-          this.serves_left = this.num_serves;
+          this.switchServe();
+          var left_score = this.left.number.get();
+          var right_score = this.right.number.get();
+          if(left_score >= 10 && right_score >= 10)
+            this.serves_left = 1;
+          else
+            this.serves_left = this.num_serves;
         }
       },
       victoryDance : function(box) {
-        box.info.dance()
+        box.info.dance();
+        this.setServe(box.player)
       },
       checkWin : function() {
-        var left_score = this.left.number.get()
-        var right_score = this.right.number.get()
+        var left_score = this.left.number.get();
+        var right_score = this.right.number.get();
         if((left_score > 10 || right_score > 10) && Math.abs(left_score-right_score) >= 2){
           game.win = true;
           this.victoryDance(left_score > right_score ? this.left : this.right);
@@ -163,4 +167,27 @@ function updateOrientation(orientation) {
       break;
   }
   window.scrollTo(0, 1);
+}
+
+$.fn.animate2 = function(css, speed, fn) {
+  if(speed === 0) { // differentiate 0 from null
+    this.css(css)
+    window.setTimeout(fn, 0)
+  } else {
+    if($.browser.safari) {
+      var s = []
+      for(var i in css) 
+          s.push(i)
+    
+      this.css({ webkitTransitionProperty: s.join(", "),
+                webkitTransitionDuration: speed+ "ms" });
+    
+      window.setTimeout(function(x,y) {
+        x.css(y)
+      },0, this, css) // have to wait for the above CSS to get applied
+      window.setTimeout(fn, speed)
+    } else {
+      this.animate(css, speed, fn)
+    }
+  }
 }
